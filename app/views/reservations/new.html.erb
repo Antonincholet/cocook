@@ -1,2 +1,7 @@
 <h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<%= <% simple_form_for @model do |f| -%>
+<%= f.input :address %>
+<%= f.input :date_time %>
+<%= f.input :guests_count %>
+<%= f.submit "Valid my reservation", class:"btn btn-primary" %>
+<% end -%> %>
