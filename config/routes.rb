@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   # post '/offers', to: 'offers#create'
   # update
   # destroy
-
-
-  resources :offers, except: [ :edit, :update ]
+  resources :offers, except: [ :edit, :update ] do
+    resources :reservations, only: [:new, :create, :destroy]
+  end
 
 
 
