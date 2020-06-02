@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
+    @offer = Offer.find(params[:offer_id])
   end
 
   def create
@@ -8,7 +9,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.offer = Offer.find(params[:offer_id])
     if @reservation.save
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       render :new
     end
