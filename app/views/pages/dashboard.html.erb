@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs" id="dashboard-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="reservations-tab" data-toggle="tab" href="#reservations" role="tab" aria-controls="reservations" aria-selected="true">Reservation</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="offers-tab" data-toggle="tab" href="#offers" role="tab" aria-controls="offers" aria-selected="false">Offers</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">
+    <ul>
+      <% @reservations.each do |reservation| %>
+      <li><%= "#{reservation.offer.label} : #{reservation.date_time} — #{reservation.address}" %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
+    <ul>
+      <% @offers.each do |offer| %>
+      <li><%= "#{offer.label} : #{offer.km_perimeter} km around — #{offer.rate_per_guest} euros" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
