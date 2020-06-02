@@ -4,6 +4,7 @@
 @import "navbar";
 @import "searchbar";
 @import "notification";
+@import "_navtab_bootstrap.scss";
 
 h1 {
   padding: 50px 20px;
@@ -19,21 +20,4 @@ h1 {
   margin-right: auto;
   padding-top: 50px;
   width: 80%;
-}
-
-.nav{
-  margin: 16px 0px;
-}
-
-.nav-pills .nav-link{
-
-  border-radius: 5px;
-  color: #483737;
-  font-size: 16px;
-  font-weight: bolder;
-
-  &.active{
-    background-color: #483737;
-  }
-
 }
