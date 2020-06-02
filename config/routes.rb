@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   # update
   # destroy
   resources :offers, except: [ :edit, :update ] do
-    resources :reservations, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new, :create]
   end
+  resources :reservations, only: [:destroy]
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
 end

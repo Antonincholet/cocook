@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
   def destroy
     set_reservation
     @reservation.destroy
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   private
