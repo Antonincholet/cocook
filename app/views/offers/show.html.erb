@@ -1,3 +1,26 @@
-<h1><%= @offer.label %></h1>
-<p><%= @offer.description %></p>
-<%= link_to 'reserve', new_offer_reservation_path(@offer)  %>
+<div class="container">
+  <div class="py-5">
+    <div>
+       <h2><%= @offer.label %></h2>
+    </div>
+      <div style="width: 50%; overflow: hidden; float: right">
+        <div style="width: 100%; float: right;">
+          <p>
+            <%= @offer.description %>
+            <%= @offer.rate_per_guest %>
+          </p>
+        </div>
+      </div>
+      <div style="width: 50%; overflow: hidden;">
+        <div style="width: 100%; float: left;">
+          <div style="width: 100%; overflow: hidden;">
+            <div style="width: 300px; float: left;">
+              <img src="https://i.picsum.photos/id/1060/200/300.jpg" alt="">
+            </div>
+          </div>
+         <%= link_to "book this offer!", new_offer_reservation_path(@offer) %>
+        </div>
+      </div>
+       <%= link_to "back", offers_path %>
+  </div>
+</div>
