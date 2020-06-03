@@ -7,7 +7,9 @@ class OffersController < ApplicationController
     @markers = @offers.map do |offer|
       {
         lat: offer.latitude,
-        lng: offer.longitude
+        lng: offer.longitude,
+        infoWindow: render_to_string(partial: "info_windows", locals: { offer: offer }),
+        image_url: helpers.asset_url('https://res.cloudinary.com/dxm0jgohk/image/upload/v1591217909/CoCook/map-marker-icon_fq3xdq.png')
       }
     end
   end
