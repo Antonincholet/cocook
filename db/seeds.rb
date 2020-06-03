@@ -30,7 +30,7 @@ offer1 = Offer.new(
   label: Faker::Food.dish,
   description: "comme au restaurant à votre domicile",
   cuisine: CUISINES.sample,
-  address: Faker::Address.full_address,
+  address: '167 rue paradis marseille',
   km_perimeter: rand(1..50),
   rate_per_guest: rand(15..35))
 offer1.user = chef
@@ -44,7 +44,7 @@ offer2 = Offer.new(
   label: Faker::Food.dish,
   description: "comme au restaurant à votre domicile",
   cuisine: CUISINES.sample,
-  address: Faker::Address.full_address,
+  address: '90 boulevard de paris, marseille',
   km_perimeter: rand(1..50),
   rate_per_guest: rand(15..35))
 offer2.user = chef
@@ -58,7 +58,7 @@ offer3 = Offer.new(
   label: Faker::Food.dish,
   description: "comme au restaurant à votre domicile",
   cuisine: CUISINES.sample,
-  address: Faker::Address.full_address,
+  address: '23 Rue Saint-Jean le Vieux, 84000 Avignon',
   km_perimeter: rand(1..50),
   rate_per_guest: rand(15..35))
 offer3.user = chef
@@ -72,7 +72,7 @@ offer4 = Offer.new(
   label: Faker::Food.dish,
   description: "comme au restaurant à votre domicile",
   cuisine: CUISINES.sample,
-  address: Faker::Address.full_address,
+  address: '46 Rue Alexandre Dumas Paris',
   km_perimeter: rand(1..50),
   rate_per_guest: rand(15..35))
 offer4.user = user
@@ -86,7 +86,7 @@ offer5 = Offer.new(
   label: Faker::Food.dish,
   description: "comme au restaurant à votre domicile",
   cuisine: CUISINES.sample,
-  address: Faker::Address.full_address,
+  address: '40 Avenue de la Bourdonnais Paris',
   km_perimeter: rand(1..50),
   rate_per_guest: rand(15..35))
 offer5.user = user
