@@ -2,7 +2,7 @@
 <h4>I would love eat <strong><%= @offer.label %></strong></h4><br>
 <%= simple_form_for([@offer, @reservation]) do |f| -%>
 <%= f.input :address,
-            label: 'at the following address :',
+            label: "at the following address :",
             placeholder: "my address" %>
 <%= f.input :date_time,
             as: :datetime,
