@@ -4,26 +4,30 @@
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="address" placeholder="Where do you eat?" label="Search">
       <input class="form-control mr-sm-2" type="date_time" placeholder="When?" label="Search">
-      <input class="form-control mr-sm-2" type="guest" placeholder="How many guest?" label="Search">
+      <input class="form-control mr-sm-2" type="guest" placeholder="How many guests?" label="Search">
       <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </div>
 
-<div class="container">
+<div class="container-card-and-map">
   <div class="py-5">
     <div class="cards">
       <% @offers.each do |offer| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,10,10.3), rgba(0,50,50,0.3)), url()">
-          <h3><%= offer.label %></h3>
+        <div class="card-category">
+          <h3><%= link_to offer.label, offer_path(offer) %></h3>
           <p><%= offer.description %><p>
-          <span class="cuisine"><%= offer.cuisine %></span>
-          <span class="rate"><%= offer.rate_per_guest %></span>
+            <div class="card-informations">
+              <span class="badge badge-pill badge-dark"><%= offer.cuisine %></span>
+              <span class="rate"><%= offer.rate_per_guest %> €</span>
+            </div>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="map">
+  <div id="map"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
 
