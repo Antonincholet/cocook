@@ -1,0 +1,12 @@
+<h1>my Offer</h1>
+
+<%= simple_form_for @offer do |f| -%>
+  <%= f.error_notification %>
+  <%= f.input :label, placeholder: 'Give an attrative label' %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :cuisine, collection: Offer::CUISINES %>
+  <%= f.input :address %>
+  <%= f.input :km_perimeter, collection: Offer::KMS %>
+  <%= f.input :rate_per_guest, placeholder: 'Rate per guests must be under 50€' %>
+  <%= f.button :submit, "Confirm your Offer ?", class:"btn btn-outline-success btn-block" %>
+<% end -%>
