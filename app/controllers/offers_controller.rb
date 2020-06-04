@@ -8,9 +8,9 @@ class OffersController < ApplicationController
 
   def index
     if params[:query].present?
-      @offers = Offer.near(params[:query], params[:distance] || 30, order: :distance)
+      @offers = policy_scope(Offer.near(params[:query], params[:distance] || 30, order: :distance))
     else
-      @offers = Offer.all
+      @offers = policy_scope(Offer)
     end
 
     @markers = @offers.map do |offer|
@@ -23,7 +23,7 @@ class OffersController < ApplicationController
     end
   end
 
-  def show; end
+  def show;  end
 
   def new
     @offer = Offer.new
@@ -33,6 +33,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @user = current_user
     @offer.user = @user
+    authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
     else
@@ -49,6 +50,7 @@ class OffersController < ApplicationController
 
   def set_offer
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def offer_params
