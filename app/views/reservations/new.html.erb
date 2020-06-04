@@ -3,7 +3,8 @@
 <%= simple_form_for([@offer, @reservation]) do |f| -%>
 <%= f.input :address,
             label: "at the following address :",
-            placeholder: "my address" %>
+            placeholder: "my address",
+            input_html: { id: :address_input }  %>
 <%= f.input :date_time,
             as: :datetime,
             html5:true,
