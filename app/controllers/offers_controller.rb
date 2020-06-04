@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   include PgSearch::Model
   pg_search_scope :search_by_address,
