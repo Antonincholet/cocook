@@ -2,11 +2,12 @@
 @import "alert";
 @import "avatar";
 @import "card";
+@import "footer";
 @import "map";
 @import "navbar";
-@import "searchbar";
+@import "navtab_bootstrap.scss";
 @import "notification";
-@import "_navtab_bootstrap.scss";
+@import "searchbar";
 
 h1 {
   padding: 50px 20px;
