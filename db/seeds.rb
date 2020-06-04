@@ -118,7 +118,7 @@ reservation2 = Reservation.new(
   guests_count: rand(1..8))
 reservation2.user = user
 reservation2.offer = offer2
-if reservation1.save
+if reservation2.save
   puts "reservation #{reservation2} created"
 else
   puts "reservation #{reservation2} FAIL !!!"
@@ -130,7 +130,7 @@ reservation3 = Reservation.new(
   guests_count: rand(1..8))
 reservation3.user = user
 reservation3.offer = offer3
-if reservation1.save
+if reservation3.save
   puts "reservation #{reservation3} created"
 else
   puts "reservation #{reservation3} FAIL !!!"
