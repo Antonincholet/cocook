@@ -8,15 +8,16 @@
           <p><%= @offer.description %></p>
           <p class="rate" text-align="right"><%= @offer.rate_per_guest %>€</p>
         </div>
+        <div><%= link_to "Book this offer!", new_offer_reservation_path(@offer), class: "btn btn-success my-2 my-sm-40" %>
+        </div>
       </div>
       <div style="width: 50%; overflow: hidden;">
         <div style="width: 100%; float: left;">
           <div style="width: 100%; overflow: hidden;">
             <div style="width: 300px; float: left;">
-              <img src="https://i.picsum.photos/id/1060/200/300.jpg" alt="offer_img" class="rounded">
+              <img src="https://i.picsum.photos/id/1060/200/300.jpg" alt="offer_img">
             </div>
           </div>
-          <%= link_to "Book this offer!", new_offer_reservation_path(@offer), class: "btn btn-success my-2 my-sm-40" %>
         </div>
       </div>
       <p><%= link_to "back", offers_path %></p>
