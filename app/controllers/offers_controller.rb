@@ -1,8 +1,16 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :destroy]
 
+  include PgSearch::Model
+  pg_search_scope :search_by_address,
+                  against: [:address]
+
   def index
-    @offers = Offer.geocoded
+    if params[:query].present?
+      @offers = Offer.near(params[:query], params[:distance] || 30, order: :distance)
+    else
+      @offers = Offer.all
+    end
 
     @markers = @offers.map do |offer|
       {
