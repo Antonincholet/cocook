@@ -52,6 +52,9 @@
                 <div class="notification-content">
                   <h4><%= service.date_time.strftime("%e %B %Y, at %l:%M %P") %></h4>
                   <p><strong><%= service.offer.label %></strong><br>at : <%= service.address %></p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">
+                    See the map
+                  </button>
                   <p><small>Total <%= service.offer.rate_per_guest %> euros</small></p>
                 </div>
                 <div class="notification-actions">
@@ -60,6 +63,25 @@
                               method: :delete,
                               data: { confirm: 'Are you sure?' },
                               class:"far fa-trash-alt" %>
+                </div>
+                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="mapModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             <% end %>
