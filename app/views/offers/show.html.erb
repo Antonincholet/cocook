@@ -8,7 +8,8 @@
           <p><%= @offer.description %></p>
           <p class="rate" text-align="right"><%= @offer.rate_per_guest %>€</p>
         </div>
-        <div><%= link_to "Book this offer!", new_offer_reservation_path(@offer), class: "btn btn-success my-2 my-sm-40" %>
+        <div class="purchase">
+          <%= link_to "Book this offer!", new_offer_reservation_path(@offer), class: "btn btn-success my-2 my-sm-40" %>
         </div>
       </div>
       <div style="width: 50%; overflow: hidden;">
@@ -20,6 +21,10 @@
           </div>
         </div>
       </div>
-      <p><%= link_to "back", offers_path %></p>
+      <div>
+        <p>
+          <%= link_to "back", offers_path, class: "cancel" %>
+        </p>
+      </div>
   </div>
 </div>

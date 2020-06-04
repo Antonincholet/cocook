@@ -1,0 +1,22 @@
+.purchase {
+  background-color: $vc;
+  background-size: cover;
+  background-position: center;
+  height: 80px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px 10px;
+}
+
+.cancel {
+  color: black;
+  &.hover {
+    text-decoration: none;
+  }
+}
