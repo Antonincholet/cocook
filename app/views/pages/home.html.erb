@@ -5,12 +5,15 @@
 <!-- A modifier lors de l'utilisation de la gem search -->
 <div class="bar">
   <div class="search-bar">
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="address" id="address_input" placeholder="Where do you eat?" label="Search">
-      <input class="form-control mr-sm-2" type="date_time" placeholder="When?" label="Search">
-      <input class="form-control mr-sm-2" type="guest" placeholder="How many guests?" label="Search">
-      <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <%= form_tag offers_path, class: "form-inline", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control mr-sm-2",
+        id: "address_input",
+        placeholder: "Where do you eat?"
+      %>
+      <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+    <% end %>
   </div>
 </div>
 
