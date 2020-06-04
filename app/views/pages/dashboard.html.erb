@@ -28,6 +28,7 @@
      <div class="container">
        <div class="row">
          <div class="col-12 col-lg-8">
+          Dishes I propose
            <% @offers.each do |offer| %>
              <div class="notification">
                <div class="notification-content">
@@ -45,19 +46,23 @@
            <% end %>
          </div>
          <div class="col-12 col-lg-4">
-            <div class="notification">
-              <div class="notification-content">
-                <p>I propose a <strong><%= offer.label %></strong> at <%= offer.km_perimeter %> km around</p>
-                <p><small>For <%= offer.rate_per_guest %> euros</small></p>
+            My next services
+            <% @services.each do |service| %>
+              <div class="notification">
+                <div class="notification-content">
+                  <h4><%= service.date_time.strftime("%e %B %Y, at %l:%M %P") %></h4>
+                  <p><strong><%= service.offer.label %></strong><br>at : <%= service.address %></p>
+                  <p><small>Total <%= service.offer.rate_per_guest %> euros</small></p>
+                </div>
+                <div class="notification-actions">
+                  <%= link_to " Cancel",
+                              reservation_path(service),
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' },
+                              class:"far fa-trash-alt" %>
+                </div>
               </div>
-              <div class="notification-actions">
-                <%= link_to " Cancel",
-                            offer_path(offer),
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' },
-                            class:"far fa-trash-alt" %>
-              </div>
-            </div>
+            <% end %>
          </div>
        </div>
      </div>
