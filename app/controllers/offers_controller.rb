@@ -23,10 +23,11 @@ class OffersController < ApplicationController
     end
   end
 
-  def show;  end
+  def show; end
 
   def new
     @offer = Offer.new
+    authorize @offer
   end
 
   def create
