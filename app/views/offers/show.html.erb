@@ -5,7 +5,7 @@
         <div class="jumbotron bg">
           <h1 class="display-4"><%= @offer.label %></h1>
           <p class="lead"><%= @offer.description %></p>
-          <hr class="my-4">
+          <hr class="my-20">
           <p>A partir de : <%= @offer.rate_per_guest %> € / personne.</p>
         </div>
         <%= link_to "Book this offer!", new_offer_reservation_path(@offer), class: "btn btn-primary btn-block" %>
