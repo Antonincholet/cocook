@@ -24,9 +24,12 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import 'mapbox-gl/dist/mapbox-gl';
+
 
 // Internal imports, e.g:
 import { initMapbox } from '../plugins/init_mapbox';
+import { initLittleMapbox } from '../plugins/init_little_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 // import { initSelect2 } from '../components/init_select2';
 
@@ -35,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
   initAutocomplete();
+  initLittleMapbox();
 });
