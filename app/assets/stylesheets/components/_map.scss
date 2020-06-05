@@ -9,6 +9,16 @@
   margin-left: 20px;
 }
 
+#little_map {
+  border: solid 1px black;
+  height: 650px;
+  width: 600px;
+  position: sticky;
+  top: 0;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
 .mapboxgl-popup {
   max-width: 200px;
 }
