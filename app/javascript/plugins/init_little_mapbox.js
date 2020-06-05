@@ -14,7 +14,7 @@ if (mapElement) {
   const map = new mapboxgl.Map({
     container: 'little_map',
     style: 'mapbox://styles/mapbox/streets-v9',
-    zoom: 12 });
+    zoom: 15 });
 
   const marker = JSON.parse(mapElement.dataset.markers);
   new mapboxgl.Marker()
