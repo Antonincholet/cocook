@@ -1,13 +1,16 @@
-<div class="container p-5">
-  <h2>Sign up</h2>
+<div class="container p-5 ">
+  <h2 class= "text-center">Sign up</h2>
+  <p class= "text-center pt-5">Complete the form and joined the <strong>Co'Cook</strong> family!</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.input :full_name,
+                  required: true,
+                  autofocus: true %>
       <%= f.input :email,
                   required: true,
-                  autofocus: true,
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
                   required: true,
@@ -18,10 +21,10 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+    <div class="form-actions pb-5 text-center">
+      <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <p class="text-center"><%= render "devise/shared/links"%></p>
 </div>
