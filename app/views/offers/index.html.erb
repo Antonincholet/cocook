@@ -14,10 +14,11 @@
 </div>
 
 <div class="container-card-and-map">
-  <div class="py-5">
-    <div class="cards">
-      <% @offers.each do |offer| %>
-        <%= link_to offer_path(offer) do %>
+  <% if @offers.length > 0 %>
+    <div class="py-5">
+      <div class="cards">
+        <% @offers.each do |offer| %>
+         <%= link_to offer_path(offer) do %>
         <div class="card-category">
           <h3>offer.label</h3>
           <div class="card-informations">
@@ -26,14 +27,24 @@
             </div>
         </div>
         <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div id="map"
+      style="height: 800px; width:650px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  <% else %>
+    <div class="container pt-5 text-center">
+      <p>Sorry, there are no offers yet in <%= params[:query] %> <i class="far fa-frown"></i> </p>
+      <p>Be the first to propose yours!</p>
+      <%= link_to  new_offer_path do %>
+        <button type="button" class="btn btn-primary">Create a new offer!</button>
       <% end %>
     </div>
-  </div>
-  <div id="map"
-    style="height: 800px; width:650px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <% end  %>
+
 </div>
 
 
