@@ -74,7 +74,7 @@ while id > 0
     offerparis = Offer.new(label: Faker::Food.dish,
                            description: "Comme au restaurant à votre domicile",
                            cuisine: CUISINES.sample,
-                           address: seeds[0]["place_name"],
+                           address: seeds[rand(0..4)]["place_name"],
                            km_perimeter: rand(5..50),
                            rate_per_guest: rand(5..55))
 
@@ -88,7 +88,7 @@ while id > 0
     offerlyon = Offer.new(label: Faker::Food.dish,
                           description: "Comme au restaurant à votre domicile",
                           cuisine: CUISINES.sample,
-                          address: seeds[5]["place_name"],
+                          address: seeds[rand(5..9)]["place_name"],
                           km_perimeter: rand(5..50),
                           rate_per_guest: rand(5..55))
 
@@ -103,7 +103,7 @@ while id > 0
     offermarseille = Offer.new(label: Faker::Food.dish,
                                description: "Comme au restaurant à votre domicile",
                                cuisine: CUISINES.sample,
-                               address: seeds[10]["place_name"],
+                               address: seeds[rand(10..14)]["place_name"],
                                km_perimeter: rand(5..50),
                                rate_per_guest: rand(5..55))
 
