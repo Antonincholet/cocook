@@ -36,7 +36,7 @@ class OffersController < ApplicationController
     @offer.user = @user
     authorize @offer
     if @offer.save
-      redirect_to offer_path(@offer)
+      redirect_to dashboard_path
     else
       render :new
     end
