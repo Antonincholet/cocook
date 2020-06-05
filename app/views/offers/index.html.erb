@@ -14,25 +14,36 @@
 </div>
 
 <div class="container-card-and-map">
-  <div class="py-5">
-    <div class="cards">
-      <% @offers.each do |offer| %>
-        <div class="card-category">
-          <h3><%= link_to offer.label, offer_path(offer) %></h3>
-          <p><%= offer.description %><p>
-            <div class="card-informations">
-              <span class="badge badge-pill badge-dark"><%= offer.cuisine %></span>
-              <span class="rate"><%= offer.rate_per_guest %> €</span>
-            </div>
-        </div>
+  <% if @offers.length > 0 %>
+    <div class="py-5">
+      <div class="cards">
+        <% @offers.each do |offer| %>
+          <div class="card-category">
+            <h3><%= link_to offer.label, offer_path(offer) %></h3>
+            <p><%= offer.description %><p>
+              <div class="card-informations">
+                <span class="badge badge-pill badge-dark"><%= offer.cuisine %></span>
+                <span class="rate"><%= offer.rate_per_guest %> €</span>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div id="map"
+      style="height: 800px; width:650px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  <% else %>
+    <div class="container pt-5 text-center">
+      <p>Sorry, there are no offers yet in <%= params[:query] %> <i class="far fa-frown"></i> </p>
+      <p>Be the first to propose yours!</p>
+      <%= link_to  new_offer_path do %>
+        <button type="button" class="btn btn-primary">Create a new offer!</button>
       <% end %>
     </div>
-  </div>
-  <div id="map"
-    style="height: 800px; width:650px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <% end  %>
+
 </div>
 
 
