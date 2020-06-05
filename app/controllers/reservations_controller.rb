@@ -2,12 +2,14 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     @offer = Offer.find(params[:offer_id])
+    authorize @reservation
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
     @reservation.offer = Offer.find(params[:offer_id])
+    authorize @reservation
     if @reservation.save
       redirect_to dashboard_path
     else
@@ -19,6 +21,7 @@ class ReservationsController < ApplicationController
     set_reservation
     @reservation.destroy
     redirect_to dashboard_path
+    authorize @reservation
   end
 
   private

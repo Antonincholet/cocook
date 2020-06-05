@@ -1,0 +1,81 @@
+[{
+  "place_name": "Rue Rambuteau, 75004 Paris, France",
+  "coordinates": [2.351086, 48.861709],
+  "postcode": "75004",
+  "locality": "4e arrondissement de Paris"
+}, {
+  "place_name": "Rue De Passy, 75016 Paris, France",
+  "coordinates": [2.279428, 48.85781],
+  "postcode": "75016",
+  "locality": "16e arrondissement de Paris"
+}, {
+  "place_name": "Rue De Tolbiac, 75013 Paris, France",
+  "coordinates": [2.359471, 48.82628],
+  "postcode": "75013",
+  "locality": "13e arrondissement de Paris"
+}, {
+  "place_name": "Rue Des Orteaux, 75020 Paris, France",
+  "coordinates": [2.404063, 48.856257],
+  "postcode": "75020",
+  "locality": "20e arrondissement de Paris"
+}, {
+  "place_name": "Rue Labat, 75018 Paris, France",
+  "coordinates": [2.348327, 48.889154],
+  "postcode": "75018",
+  "locality": "18e arrondissement de Paris"
+}, {
+  "place_name": "Rue Du Commandant Charcot, 69110 Sainte-Foy-lès-Lyon, France",
+  "coordinates": [4.7956851, 45.7496154],
+  "postcode": "69110",
+  "locality": "Sainte-Foy-lès-Lyon"
+}, {
+  "place_name": "Rue Pélisson, 69100 Villeurbanne, France",
+  "coordinates": [4.886597, 45.773766],
+  "postcode": "69100",
+  "locality": "Villeurbanne"
+}, {
+  "place_name": "Rue Étienne Dolet, 69003 Lyon, France",
+  "coordinates": [4.851883, 45.757569],
+  "postcode": "69003",
+  "locality": "3e arrondissement de Lyon"
+}, {
+  "place_name": "Rue Des Jasmins, 69008 Lyon, France",
+  "coordinates": [4.856528, 45.731779],
+  "postcode": "69008",
+  "locality": "8e arrondissement de Lyon"
+}, {
+  "place_name": "Rue Rosset, 69004 Lyon, France",
+  "coordinates": [4.830818, 45.778484],
+  "postcode": "69004",
+  "locality": "4e arrondissement de Lyon"
+}, {
+  "place_name": "Rue Pavillon, 13001 Marseille, France",
+  "coordinates": [5.377109, 43.295382],
+  "postcode": "13001",
+  "locality": "1e arrondissement van Marseille"
+}, {
+  "place_name": "Impasse Pigala, 13015 Marseille, France",
+  "coordinates": [5.354754, 43.372934],
+  "postcode": "13015",
+  "locality": "15e arrondissement de Marseille"
+}, {
+  "place_name": "Avenue Manon, 13012 Marseille, France",
+  "coordinates": [5.431462, 43.315335],
+  "postcode": "13012",
+  "locality": "12e arrondissement de Marseille"
+}, {
+  "place_name": "Boulevard Bernard, 13011 Marseille, France",
+  "coordinates": [5.483873, 43.284121],
+  "postcode": "13011",
+  "locality": "11e arrondissement de Marseille"
+}, {
+  "place_name": "Rue Du Lieutenant Moulin, 13008 Marseille, France",
+  "coordinates": [5.35517, 43.232648],
+  "postcode": "13008",
+  "locality": "8e arrondissement de Marseille"
+}, {
+  "place_name": "Rue Léon Charve, 13007 Marseille, France",
+  "coordinates": [5.358679, 43.283696],
+  "postcode": "13007",
+  "locality": "7e arrondissement de Marseille"
+}]
