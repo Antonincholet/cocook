@@ -120,6 +120,7 @@ def save_reservation(resa)
     puts "Reservation at #{resa.address} FAIL !!!"
   end
 end
+
 # création des Réservation Paris, Lyon, Marseille
 puts 'Create Reservations:'
 # création des Réservation Paris

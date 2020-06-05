@@ -25,20 +25,66 @@
       <% end %>
   </div>
   <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
-      <% @offers.each do |offer| %>
-        <div class="notification">
-          <div class="notification-content">
-            <p>I propose a <strong><%= offer.label %></strong> at <%= offer.km_perimeter %> km around</p>
-            <p><small>For <%= offer.rate_per_guest %> euros</small></p>
-          </div>
-          <div class="notification-actions">
-            <%= link_to " Cancel",
-                        offer_path(offer),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' },
-                        class:"far fa-trash-alt" %>
-          </div>
-          </div>
-      <% end %>
+     <div class="container">
+       <div class="row">
+         <div class="col-12 col-lg-8">
+          Dishes I propose
+           <% @offers.each do |offer| %>
+             <div class="notification">
+               <div class="notification-content">
+                 <p>I propose a <strong><%= offer.label %></strong> at <%= offer.km_perimeter %> km around</p>
+                 <p><small>For <%= offer.rate_per_guest %> euros</small></p>
+               </div>
+               <div class="notification-actions">
+                 <%= link_to " Cancel",
+                             offer_path(offer),
+                             method: :delete,
+                             data: { confirm: 'Are you sure?' },
+                             class:"far fa-trash-alt" %>
+               </div>
+             </div>
+           <% end %>
+         </div>
+         <div class="col-12 col-lg-4">
+            My next services
+            <% @services.each do |service| %>
+            <%  markers = { lat: service.latitude, lng: service.longitude } %>
+              <div class="notification">
+                <div class="notification-content">
+                  <h4><%= service.date_time.strftime("%e %B %Y, at %l:%M %P") %></h4>
+                  <p><strong><%= service.offer.label %></strong><br>at : <%= service.address %></p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">
+                    See the map
+                  </button>
+                  <p><small>Total <%= service.offer.rate_per_guest %> euros</small></p>
+                </div>
+                <div class="notification-actions">
+                  <%= link_to " Cancel",
+                              reservation_path(service),
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' },
+                              class:"far fa-trash-alt" %>
+                </div>
+                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true" >
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                       <div class="modal-body">
+                       <div id="little_map"
+                        style="height: 500px; width: 500px; margin: auto"
+                        data-markers="#{markers.to_json}"
+                        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+         </div>
+       </div>
+     </div>
   </div>
 </div>
