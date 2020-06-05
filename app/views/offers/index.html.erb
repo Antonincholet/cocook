@@ -17,14 +17,15 @@
   <div class="py-5">
     <div class="cards">
       <% @offers.each do |offer| %>
+        <%= link_to offer_path(offer) do %>
         <div class="card-category">
-          <h3><%= link_to offer.label, offer_path(offer) %></h3>
-          <p><%= offer.description %><p>
-            <div class="card-informations">
+          <h3>offer.label</h3>
+          <div class="card-informations">
               <span class="badge badge-pill badge-dark"><%= offer.cuisine %></span>
               <span class="rate"><%= offer.rate_per_guest %> €</span>
             </div>
         </div>
+        <% end %>
       <% end %>
     </div>
   </div>
