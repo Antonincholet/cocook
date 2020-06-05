@@ -48,6 +48,7 @@
          <div class="col-12 col-lg-4">
             My next services
             <% @services.each do |service| %>
+            <%  markers = { lat: service.latitude, lng: service.longitude } %>
               <div class="notification">
                 <div class="notification-content">
                   <h4><%= service.date_time.strftime("%e %B %Y, at %l:%M %P") %></h4>
@@ -70,6 +71,7 @@
                        <div class="modal-body">
                        <div id="little_map"
                         style="height: 500px; width: 500px; margin: auto"
+                        data-markers="#{markers.to_json}"
                         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
                       </div>
                       </div>
