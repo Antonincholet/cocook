@@ -55,8 +55,8 @@ save_user(chefmarseille, 'Marseille')
 
 # seeds OFFERs avec parse JSON
 # Parsing JSON
-filepath = '/Users/wagon/code/antonincholet/cocook/db/realseed.json'
-serialized_seeds = File.read(filepath)
+path = File.join(File.dirname(__FILE__), "./realseed.json")
+serialized_seeds = File.read(path)
 seeds = JSON.parse(serialized_seeds)
 # Sauvegarde OFFERs
 def save_offer(offer)
