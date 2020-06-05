@@ -1,162 +1,146 @@
+require 'json'
 require 'faker'
 
+# seeds USERs avec FAKER
 CUISINES = ['french', 'asian', 'japanese', 'italian', 'oriental', 'greek', 'spanish', 'swedish', 'fast food', 'argentine', 'brazilian', 'street food']
+# Sauvegarde USERs
+def save_user(user, city)
+  if user.save
+    puts "user #{user.full_name} from #{city} CREATED"
+  else
+    puts "user #{user.full_name} FAIL !!!"
+  end
+end
+# création des 'User' Paris, Lyon, Marseille
+# -- 'user' PARIS --
+puts 'Create Users:'
 
-puts 'create user'
+userparis = User.new(email: 'userparis@mail.fr',
+                     password: 'password',
+                     full_name: Faker::FunnyName.name,
+                     phone: Faker::PhoneNumber.phone_number)
+save_user(userparis, 'Paris')
+# -- 'user' LYON --
 
-user = User.new(email: 'mail@mail.fr',
-                password: 'password',
-                full_name: Faker::FunnyName.name,
-                phone: Faker::PhoneNumber.phone_number)
-if user.save
-  puts "user #{user.full_name} created"
-else
-  puts "user #{user.full_name} FAIL !!!"
+userlyon = User.new(email: 'userlyon@mail.fr',
+                    password: 'password',
+                    full_name: Faker::FunnyName.name,
+                    phone: Faker::PhoneNumber.phone_number)
+save_user(userlyon, 'Lyon')
+# -- 'user' MARSEILLE --
+usermarseille = User.new(email: 'usermarseille@mail.fr',
+                         password: 'password',
+                         full_name: Faker::FunnyName.name,
+                         phone: Faker::PhoneNumber.phone_number)
+save_user(usermarseille, 'Marseille')
+# création des 'Chefs' Paris, Lyon, Marseille
+# -- 'chef' PARIS --
+chefparis = User.new(email: 'chefparis@mail.fr',
+                     password: 'password',
+                     full_name: Faker::FunnyName.name,
+                     phone: Faker::PhoneNumber.phone_number)
+save_user(chefparis, 'Paris')
+# -- 'chef' LYON --
+cheflyon = User.new(email: 'cheflyon@mail.fr',
+                    password: 'password',
+                    full_name: Faker::FunnyName.name,
+                    phone: Faker::PhoneNumber.phone_number)
+save_user(cheflyon, 'Lyon')
+# -- 'chef' MARSEILLE --
+chefmarseille = User.new(email: 'chefmarseille@mail.fr',
+                         password: 'password',
+                         full_name: Faker::FunnyName.name,
+                         phone: Faker::PhoneNumber.phone_number)
+save_user(chefmarseille, 'Marseille')
+
+# seeds OFFERs avec parse JSON
+# Parsing JSON
+filepath = '/Users/wagon/code/antonincholet/cocook/db/realseed.json'
+serialized_seeds = File.read(filepath)
+seeds = JSON.parse(serialized_seeds)
+# Sauvegarde OFFERs
+def save_offer(offer)
+  if offer.save
+    puts "Offer #{offer.label} at #{offer.address} CREATED"
+  else
+    puts "Offer #{offer.label} FAIL !!!"
+  end
+end
+# création des Offres Paris, Lyon, Marseille
+puts 'Create Offers:'
+puts 'Create Offers from PARIS'
+id = 5
+while id > 0
+    offerparis = Offer.new(label: Faker::Food.dish,
+                           description: "Comme au restaurant à votre domicile",
+                           cuisine: CUISINES.sample,
+                           address: seeds[0]["place_name"],
+                           km_perimeter: rand(5..50),
+                           rate_per_guest: rand(5..55))
+
+    offerparis.user = chefparis
+    save_offer(offerparis)
+    id -= 1
+end
+id = 5
+puts 'Create Offers from LYON'
+while id > 0
+    offerlyon = Offer.new(label: Faker::Food.dish,
+                          description: "Comme au restaurant à votre domicile",
+                          cuisine: CUISINES.sample,
+                          address: seeds[5]["place_name"],
+                          km_perimeter: rand(5..50),
+                          rate_per_guest: rand(5..55))
+
+    offerlyon.user = cheflyon
+    save_offer(offerlyon)
+    id -= 1
 end
 
-chef = User.new(email: 'chef@mail.fr',
-                password: 'password',
-                full_name: Faker::FunnyName.name,
-                phone: Faker::PhoneNumber.phone_number)
-if chef.save
-  puts "user #{chef.full_name} created"
-else
-  puts "user #{chef.full_name} FAIL !!!"
+puts 'Create Offers from MARSEILLE'
+id = 5
+while id > 0
+    offermarseille = Offer.new(label: Faker::Food.dish,
+                               description: "Comme au restaurant à votre domicile",
+                               cuisine: CUISINES.sample,
+                               address: seeds[10]["place_name"],
+                               km_perimeter: rand(5..50),
+                               rate_per_guest: rand(5..55))
+
+    offermarseille.user = chefmarseille
+    save_offer(offermarseille)
+    id -= 1
 end
-
-puts 'create offers:'
-
-offer1 = Offer.new(
-  label: Faker::Food.dish,
-  description: "comme au restaurant à votre domicile",
-  cuisine: CUISINES.sample,
-  address: '167 rue paradis marseille',
-  km_perimeter: rand(1..50),
-  rate_per_guest: rand(15..35))
-offer1.user = chef
-if offer1.save
-  puts "user #{offer1.label} created"
-else
-  puts "user #{offer1.label} FAIL !!!"
+# seeds RESERVATIONs
+# Sauvegarde RESERVATIONs
+def save_reservation(resa)
+  if resa.save
+    puts "Reservation at #{resa.address} CREATED"
+  else
+    puts "Reservation at #{resa.address} FAIL !!!"
+  end
 end
+# création des Réservation Paris, Lyon, Marseille
+puts 'Create Reservations:'
+# création des Réservation Paris
+resaparis = Reservation.new(address: seeds[4]["place_name"],
+                            date_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90, format: :default),
+                            guests_count: rand(1..8))
+resaparis.user = userparis
+resaparis.offer = offerparis
+save_reservation(resaparis)
+# création des Réservation Lyon
+resalyon = Reservation.new(address: seeds[9]["place_name"],
+                           date_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90, format: :default),
+                           guests_count: rand(1..8))
+resalyon.user = userlyon
+resalyon.offer = offerlyon
+save_reservation(resalyon)
+# création des Réservation Marseille
+resamarseille = Reservation.new(address: seeds[14]["place_name"],
+                                date_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90, format: :default),
+                                guests_count: rand(1..8))
 
-offer2 = Offer.new(
-  label: Faker::Food.dish,
-  description: "comme au restaurant à votre domicile",
-  cuisine: CUISINES.sample,
-  address: '90 boulevard de paris, marseille',
-  km_perimeter: rand(1..50),
-  rate_per_guest: rand(15..35))
-offer2.user = chef
-if offer2.save
-  puts "user #{offer2.label} created"
-else
-  puts "user #{offer2.label} FAIL !!!"
-end
-
-offer3 = Offer.new(
-  label: Faker::Food.dish,
-  description: "comme au restaurant à votre domicile",
-  cuisine: CUISINES.sample,
-  address: '23 Rue Saint-Jean le Vieux, 84000 Avignon',
-  km_perimeter: rand(1..50),
-  rate_per_guest: rand(15..35))
-offer3.user = chef
-if offer3.save
-  puts "user #{offer3.label} created"
-else
-  puts "user #{offer3.label} FAIL !!!"
-end
-
-offer4 = Offer.new(
-  label: Faker::Food.dish,
-  description: "comme au restaurant à votre domicile",
-  cuisine: CUISINES.sample,
-  address: '46 Rue Alexandre Dumas Paris',
-  km_perimeter: rand(1..50),
-  rate_per_guest: rand(15..35))
-offer4.user = user
-if offer4.save
-  puts "user #{offer4.label} created"
-else
-  puts "user #{offer4.label} FAIL !!!"
-end
-
-offer5 = Offer.new(
-  label: Faker::Food.dish,
-  description: "comme au restaurant à votre domicile",
-  cuisine: CUISINES.sample,
-  address: '40 Avenue de la Bourdonnais Paris',
-  km_perimeter: rand(1..50),
-  rate_per_guest: rand(15..35))
-offer5.user = user
-if offer5.save
-  puts "user #{offer5.label} created"
-else
-  puts "user #{offer5.label} FAIL !!!"
-end
-
-
-
-puts 'create reservations:'
-
-reservation1 = Reservation.new(
-  address: Faker::Address.full_address,
-  date_time: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now, format: :default),
-  guests_count: rand(1..8))
-reservation1.user = user
-reservation1.offer = offer1
-if reservation1.save
-  puts "reservation #{reservation1} created"
-else
-  puts "reservation #{reservation1} FAIL !!!"
-end
-
-reservation2 = Reservation.new(
-  address: Faker::Address.full_address,
-  date_time: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now, format: :default),
-  guests_count: rand(1..8))
-reservation2.user = user
-reservation2.offer = offer2
-if reservation1.save
-  puts "reservation #{reservation2} created"
-else
-  puts "reservation #{reservation2} FAIL !!!"
-end
-
-reservation3 = Reservation.new(
-  address: Faker::Address.full_address,
-  date_time: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now, format: :default),
-  guests_count: rand(1..8))
-reservation3.user = user
-reservation3.offer = offer3
-if reservation1.save
-  puts "reservation #{reservation3} created"
-else
-  puts "reservation #{reservation3} FAIL !!!"
-end
-
-reservation4 = Reservation.new(
-  address: Faker::Address.full_address,
-  date_time: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now, format: :default),
-  guests_count: rand(1..8))
-reservation4.user = chef
-reservation4.offer = offer4
-if reservation4.save
-  puts "reservation #{reservation4} created"
-else
-  puts "reservation #{reservation4} FAIL !!!"
-end
-
-reservation5 = Reservation.new(
-  address: Faker::Address.full_address,
-  date_time: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now, format: :default),
-  guests_count: rand(1..8))
-reservation5.user = chef
-reservation5.offer = offer5
-if reservation5.save
-  puts "reservation #{reservation5} created"
-else
-  puts "reservation #{reservation5} FAIL !!!"
-end
-
+resamarseille.user = usermarseille
+resamarseille.offer = offermarseille
+save_reservation(resamarseille)
